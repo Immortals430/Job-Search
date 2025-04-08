@@ -24,8 +24,10 @@ export default function Cards({ filteredJobs, loading, jobs }) {
                     {obj.company}
                   </Card.Subtitle>
                   <Card.Subtitle className="mb-2 text-muted">
-                    <strong className="text-dark">category: <span className="text-success">{obj.job_category}</span></strong>{" "}
-                    
+                    <strong className="text-dark">
+                      category:{" "}
+                      <span className="text-success">{obj.job_category}</span>
+                    </strong>{" "}
                   </Card.Subtitle>
                   <Card.Text
                     className={`${
@@ -44,7 +46,8 @@ export default function Cards({ filteredJobs, loading, jobs }) {
         </Row>
       </Container>
 
-      {(!loading && filteredJobs.length == 0) || jobs.length == 0 ? (
+      {(!loading && filteredJobs.length == 0) ||
+      (!loading && jobs.length == 0) ? (
         <Container>
           <img src="/not-found.avif" className="not-found" height="327.4" />
           <h1 className="not-found-text">No Job Found</h1>

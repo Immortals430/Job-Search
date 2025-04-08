@@ -12,23 +12,35 @@ function App() {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const { data } = await axios.get(
-        "https://run.mocky.io/v3/0edd1a6f-f06c-4511-a290-8a76331257b8"
-      );
-      setJobs(data);
-      setFilteredJobs(data);
-      setLoading(false);
+      try {
+        const { data } = await axios.get(
+          "https://run.mocky.io/v3/ba86f804-08a7-494e-9cdd-7c99aacb9582"
+        );
+        setJobs(data);
+        setFilteredJobs(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchJobs();
   }, []);
 
-
-  
   return (
     <>
       <header className="fixed-top">
-        <Header setLoading={setLoading} jobs={jobs} setFilteredJobs={setFilteredJobs} />
-        <Filters setLoading={setLoading} jobs={jobs} setFilteredJobs={setFilteredJobs} />
+        <Header
+          setLoading={setLoading}
+          jobs={jobs}
+          setFilteredJobs={setFilteredJobs}
+        />
+        <Filters
+          setLoading={setLoading}
+          jobs={jobs}
+          setFilteredJobs={setFilteredJobs}
+        />
       </header>
 
       <main>
